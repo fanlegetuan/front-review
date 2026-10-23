@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "Review this PR: adds a settings drawer with framer-motion animations, react-icons, and a new useGlobalStore that duplicates existing Zustand user store. Diff includes Button from a second UI kit.",
+    "expected": "Block or request changes; flag overlapping animation/icon/UI libs and duplicate global state; cite preferred Motion/Lucide/shadcn-Nova/Zustand."
+  },
+  {
+    "id": 2,
+    "prompt": "Review AI-generated list page: looks fine visually but only implements happy path—no loading/empty/error; uses emoji instead of Lucide; @ts-ignore on props; CI green.",
+    "expected": "Block on green-build cheat and missing states; Fail design consistency for emoji icons; require type-safe fix."
+  },
+  {
+    "id": 3,
+    "prompt": "Small PR: replaces a custom split pane with react-resizable-panels, reuses existing shadcn Dialog, Lucide icons, local useState only. Typecheck/lint/build passed.",
+    "expected": "Approve or Approve with nits; Pass preferred stack and verification; minimal findings."
+  }
+]
