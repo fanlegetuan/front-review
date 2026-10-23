@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "prompt": "Review this PR: adds a settings drawer with framer-motion animations, react-icons, and a new useGlobalStore that duplicates existing Zustand user store. Diff includes Button from a second UI kit.",
-    "expected": "Block or request changes; flag overlapping animation/icon/UI libs and duplicate global state; cite preferred Motion/Lucide/shadcn-Nova/Zustand."
+    "prompt": "Review this PR: settings drawer with framer-motion, react-icons, a second UI-kit Button, and a new useGlobalStore duplicating the existing Zustand user store.",
+    "expected": "Block; flag overlapping animation/icon/UI libs and duplicate Zustand; cite Motion/Lucide/shadcn-Nova/Zustand."
   },
   {
     "id": 2,
-    "prompt": "Review AI-generated list page: looks fine visually but only implements happy path—no loading/empty/error; uses emoji instead of Lucide; @ts-ignore on props; CI green.",
-    "expected": "Block on green-build cheat and missing states; Fail design consistency for emoji icons; require type-safe fix."
+    "prompt": "Review AI list page: happy path only, emoji icons, @ts-ignore on props, CI green. Also uses hardcoded #FF5500, middle-dot titles like '设置 · 高级', decorative Eyebrow OVERVIEW above Overview, and 1px borders.",
+    "expected": "Block on green-build + missing states + emoji; Fail UI style for non-Radix color, · separators, decorative Eyebrow, 1px borders."
   },
   {
     "id": 3,
-    "prompt": "Small PR: replaces a custom split pane with react-resizable-panels, reuses existing shadcn Dialog, Lucide icons, local useState only. Typecheck/lint/build passed.",
-    "expected": "Approve or Approve with nits; Pass preferred stack and verification; minimal findings."
+    "prompt": "Small PR: react-resizable-panels + existing shadcn Dialog + Lucide + local useState; colors from Radix gray/accent scales; 0.5px borders; three type sizes ≥12px; no Eyebrow; typecheck/lint/build passed.",
+    "expected": "Approve or Approve with nits; Pass preferred stack, UI style, verification."
   }
 ]
