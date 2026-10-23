@@ -2,7 +2,7 @@
 
 Agent Skill for reviewing frontend PRs and AI-generated UI against a fixed stack, Radix UI Colors, and UI copy/layout norms.
 
-**Darwin score:** 90.0 (`full_test`)
+**Darwin score:** 94.2 (`full_test`)
 
 **Prefer stack:** shadcn/ui (Nova) / Lucide / Motion / react-resizable-panels / dnd-kit / Zustand / [Radix UI Colors](https://www.radix-ui.com/colors).
 
@@ -20,6 +20,7 @@ Frontend / UI PR review, AI-generated page review, stack or UI-style drift check
 - Radix UI Colors for all color usage
 - Copy: no middle-dot separators, no filler helper text, no decorative Eyebrow/Overline
 - Layout: optical alignment, concentric radii, `0.5px` borders, ≤4 type sizes (min 12px), restrained motion (`ease-out` ~250ms)
+- Keyboard / a11y / long-text checks on interactive UI
 - No green-build cheats
 - Structured output: Verdict / Findings / Checklist scores (includes **UI style**)
 

@@ -4,7 +4,7 @@ description: >-
   Use when reviewing frontend PRs, AI-generated UI, or component changes against
   project stack, Radix UI Colors, and UI copy/layout norms (shadcn/Nova, Lucide,
   Motion, Zustand). Triggers: front-review, frontend review, UI PR review,
-  UI样式规范, 前端代码审查.
+  component PR review, Radix colors review, UI样式规范, 前端代码审查.
 ---
 # front-review
 
@@ -38,6 +38,8 @@ Review frontend diffs against project standards. Catch stack drift, design incon
 
 🛑 **STOP before Approve:** any Blocker, silenced types/lint/tests, or features deleted only for CI → Block or Request changes.
 
+🔴 **CHECKPOINT:** If UI style scores Fail → STOP before Approve; emit a Blocker per failed UI-style rule with `path:line` evidence.
+
 ## Preferred stack (project-compatible)
 
 Import only libraries the page needs. Flag conflicting imports unless the PR documents a forced exception.
@@ -67,10 +69,10 @@ Import only libraries the page needs. Flag conflicting imports unless the PR doc
 5. Optical alignment; nested corners use concentric radii
 6. Borders / dividers at `0.5px` when lines are needed
 7. Minimize motion; if required → `ease-out` ~`250ms` baseline
-8. ≤4 type sizes (prefer 3); min `12px`; hierarchy via weight / color / spacing, not more sizes
+8. ≤4 type sizes (must target 3; hard max 4); min `12px`; hierarchy via weight / color / spacing, not more sizes
 9. Minimize judgment-required choices; put required choices where the user already decides; reorder by information priority
 10. No casual radius / shadow / colored left-edge card stripes; if used, values must match the scene
-11. No decorative Eyebrow / Overline that repeats the title; keep only when it adds category/context the title lacks; prefer type/weight/space for hierarchy
+11. No decorative Eyebrow / Overline that repeats the title; keep only when it adds category/context the title lacks; require type/weight/space for hierarchy
 
 **Code quality:** single responsibility; local React state first, Zustand only if shared; mature libs for complex UX; no cosmetic-only heavy deps; no `@ts-ignore` / eslint-disable / deleted tests as green-build.
 
@@ -85,6 +87,7 @@ Import only libraries the page needs. Flag conflicting imports unless the PR doc
 | Overlapping new dep (2nd UI/icon/motion/state) | Cite Prefer table + existing pkg | Blocker: drop or document exception |
 | Emoji / mixed icons | Require Lucide (or project set) | Fail Design |
 | Happy-path only | List missing states as Blockers | Block until states exist |
+| Interactive UI missing keyboard / a11y / long-text overflow | List gaps as Blockers (focus order, labels, truncate/wrap) | Fail Design |
 | `@ts-ignore` / eslint-disable / deleted tests for CI | Real type/lint/test fix | 🛑 Block — green-build cheat |
 | Zustand for local-only UI | `useState`/`useReducer` | Request changes if duplicates existing store |
 | Unrelated refactor in PR | Flag out-of-scope hunks | Request changes: split PR |
@@ -127,6 +130,7 @@ No scripts or assets. Do not invent external reference paths.
 - Drop in a second design system “for consistency”
 - Rewrite unrelated modules “while here”
 - Skip Orient and jump to nits
+- Skip keyboard / a11y / long-text checks on interactive UI
 
 ## Output
 
