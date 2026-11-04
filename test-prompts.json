@@ -1,17 +1,22 @@
 [
   {
     "id": 1,
-    "prompt": "Review this PR: settings drawer with framer-motion, react-icons, a second UI-kit Button, and a new useGlobalStore duplicating the existing Zustand user store.",
-    "expected": "Block; flag overlapping animation/icon/UI libs and duplicate Zustand; cite Motion/Lucide/shadcn-Nova/Zustand."
+    "prompt": "Review this PR: settings drawer with framer-motion, react-icons, a second UI-kit Button, a new useGlobalStore duplicating the existing Zustand user store, and an extra bun.lock committed in an npm repo.",
+    "expected": "Block; flag overlapping animation/icon/UI libs, duplicate Zustand store, and stray bun.lock; cite Motion/Lucide/shadcn-Nova/Zustand and single lockfile rule."
   },
   {
     "id": 2,
-    "prompt": "Review AI list page: happy path only, emoji icons, @ts-ignore on props, CI green. Also uses hardcoded #FF5500, middle-dot titles like '设置 · 高级', decorative Eyebrow OVERVIEW above Overview, and 1px borders.",
-    "expected": "Block on green-build + missing states + emoji; Fail UI style for non-Radix color, · separators, decorative Eyebrow, 1px borders."
+    "prompt": "Review AI list page: happy path only, emoji icons, @ts-ignore on props, CI green. Also uses hardcoded #FF5500, middle-dot titles like '设置 · 高级', raw enum 'LOCAL' in Chinese table, decorative Eyebrow OVERVIEW above Overview, and 1px borders.",
+    "expected": "Block on green-build cheat + missing states + emoji; Fail UI style for non-Radix color, · separators, raw enum leak, decorative Eyebrow, and 1px borders."
   },
   {
     "id": 3,
-    "prompt": "Small PR: react-resizable-panels + existing shadcn Dialog + Lucide + local useState; colors from Radix gray/accent scales; 0.5px borders; three type sizes ≥12px; no Eyebrow; typecheck/lint/build passed.",
-    "expected": "Approve or Approve with nits; Pass preferred stack, UI style, verification."
+    "prompt": "审查这个前端模块：1) routes/_app/users.tsx 620行，抽屉修改表单后点击遮罩直接关闭未触发未保存确认，修改用户角色后只 invalidate 了 ['users'] 没刷新 ['roles']；2) messages.index.tsx 的 validateSearch 未校验负数 page，URL 参数后退时搜索框本地 state 不更新；3) failure-pulse.ts 用 for...await 串行拉取多页数据；4) json-view.tsx 每次渲染都直接对 2MB Base64 报文做解码和正则分词。",
+    "expected": "Block / Request changes; 指出抽屉未保存拦截缺失、['roles'] 缓存未失效、URL Search Params 校验与双向同步缺失（Blockers），以及 for...await 串行瀑布流、大报文渲染未 useMemo 缓存、路由文件超 300 行需拆分组件（Warnings）。"
+  },
+  {
+    "id": 4,
+    "prompt": "Small PR: react-resizable-panels + existing shadcn Dialog + Lucide + local useState; URL search params clamped in validateSearch; colors from Radix gray/accent scales; 0.5px borders; three type sizes >=12px; no Eyebrow; typecheck/lint/vitest passed.",
+    "expected": "Approve or Approve with nits; Pass all 7 checklist dimensions including State/URL sync, UI style, and Verification."
   }
 ]
